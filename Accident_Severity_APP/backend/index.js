@@ -2,6 +2,9 @@ const express = require('express')
 const axios = require('axios')
 const cors = require('cors')
 const app = express()
+app.get((req,res)=>{
+    req.send("Bakend running");
+})
 app.use(cors())
 app.use(express.json())
 
@@ -22,6 +25,7 @@ app.post('/api/predict', async (req, res) => {
         res.status(500).json({ error: err?.response?.data || err.message })
     }
 })
+
 
 
 app.listen(5000, () => console.log('Node backend listening on http://localhost:5000'))
